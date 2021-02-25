@@ -1,0 +1,40 @@
+<div class="row">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header text-body">
+                <i class="fa fa-truck-plow mr-2"></i> <b>Service Types List</b>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-hovered">
+                    <tr>
+                        <th>Id</th>
+                        <th>Service Name</th>
+                        <th>Service Price</th>
+                        <th class="fit">Options</th>
+                    </tr>
+                    @foreach (ServiceType item in ViewBag.ServicesTypes)
+                    {
+                        <tr>
+                            <td>@item.Id</td>
+                            <td>@item.ServiceName</td>
+                            <td>@item.Price</td>
+                            <td class="fit">
+                                <a href="#" class="btn btn-icon btn-light btn-sm"><i class="fa fa-edit"></i></a>
+                                <a href="#" class="btn btn-icon btn-light btn-sm"><i class="fa fa-times"></i></a>
+                            </td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card bg-white">
+            <div class="card-body text-center py-5">
+                <img src="~/img/undraw/vehicles.png" alt="" class="img-fluid">
+                <a class="btn btn-success rounded-pill mt-5" asp-action="Create" asp-controller="Services">Create New Services</a>
+            </div>
+
+        </div>
+    </div>
+</div>

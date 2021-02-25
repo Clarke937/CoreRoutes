@@ -1,0 +1,53 @@
+@model Company
+<div class="row">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-store-alt mr-2"></i>
+                <b>List of Companies</b>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-hovered">
+                    <tr>
+                        <th>Id</th>
+                        <th>Company Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th class="fit">Sites</th>
+                        <th class="fit">Options</th>
+                    </tr>
+                    @foreach (Company com in ViewBag.Companies)
+                    {
+                        <td>@com.Id</td>
+                        <td>@com.CompanyName</td>
+                        <td>@com.Email</td>
+                        <td>@com.Phone</td>
+                        <td class="fit">
+                            <a class="btn btn-sm btn-primary rounded-pill" asp-action="Sites" asp-route-id="@com.Id">
+                                <i class="fas fa-store-alt mr-2"></i> Sites
+                            </a>
+                        </td>
+                        <td class="fit">
+                            <a class="btn btn-icon btn-sm btn-light" href="#">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                            <a class="btn btn-icon btn-sm btn-light" href="#">
+                                <i class="fas fa-times"></i>
+                            </a>
+                        </td>   
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card">
+            <div class="card-body py-5 text-center">
+                <img src="~/img/undraw/company.png" alt="" class="img-fluid">
+                <a class="btn btn-success rounded-pill mt-5" asp-action="Create">
+                    Create New Company
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

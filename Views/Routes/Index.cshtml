@@ -1,0 +1,43 @@
+<div class="row">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-route"></i>
+                <b>List Of Established Routes</b>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-hovered">
+                    <tr>
+                        <th>Id</th>
+                        <th>Route Name</th>
+                        <th>Route Date</th>
+                        <th>Service Type</th>
+                        <th>Route Sites</th>
+                        <th>State</th>
+                        <th>Options</th>
+                    </tr>
+                    @foreach (Route route in ViewBag.Routes)
+                    {
+                        <tr>
+                            <td>@route.Id</td>
+                            <td>@route.RouteName</td>
+                            <td>@route.DeliveryDate</td>
+                            <td>@route.ServiceType.ServiceName</td>
+                            <td><a href="#" class="link">Sites</a></td>
+                            <td><span class="badge badge-warning">Pending</span></td>
+                            <th></th>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card">
+            <div class="card-body py-5 text-center">
+                <img src="~/img/undraw/route.png" alt="" class="img-fluid">
+                <a asp-action="Create" asp-controller="Routes" class="btn btn-success rounded-pill mt-5">Create New Route</a>
+            </div>
+        </div>
+    </div>
+</div>
