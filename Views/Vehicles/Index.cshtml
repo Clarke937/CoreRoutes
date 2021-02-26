@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-truck-plow mr-2"></i>
+                <b>Vehicle List</b>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Id</th>
+                        <th>Vehicle Name</th>
+                    </tr>
+                    @foreach (Vehicle ve in ViewBag.Vehicles){
+                        <tr>
+                            <td>@ve.Id</td>
+                            <td>@ve.VehicleName</td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card">
+            <div class="card-body py-5 text-center">
+                <img src="~/img/undraw/vehicles.png" alt="" class="img-fluid">
+                <a asp-action="Create" asp-controller="Vehicles" class="btn btn-success rounded-pill mt-5">Create New Vehicle</a>
+            </div>
+        </div>
+    </div>
+</div>

@@ -32,18 +32,7 @@ namespace CoreRoutes.Controllers
             ViewBag.Company = dbc.Companies.Find(id);
             ViewBag.Sites = dbc.CompanySites.Where(x => x.CompanyFK == id).ToList();
 
-            //ViewModel
-            CompanySitesVM csvm = new CompanySitesVM();
-            csvm.IdCompany = id;
-            foreach(Weekday w in dbc.Weekdays.ToList()){
-                csvm.Weekdays.Add(new CheckboxItem{
-                    Id = w.Id,
-                    Display = w.DayName,
-                    IsChecked = false
-                });
-            }
-
-            return View(csvm);
+            return View();
         }
 
         [HttpPost]
@@ -64,22 +53,13 @@ namespace CoreRoutes.Controllers
         }
 
         [HttpPost]
-        public IActionResult InsertSite(CompanySitesVM Cs){
-            Cs.CompanySite.CreateAt = DateTime.Now;
-            Cs.CompanySite.UpdateAt = DateTime.Now;
-            dbc.CompanySites.Add(Cs.CompanySite);
-            dbc.SaveChanges();
-            
-            var days = Cs.Weekdays.Where(x => x.IsChecked).Select(x => x.Id).ToList();
-            foreach(int id in days){
-                dbc.CompanySiteDates.Add(new CompanySiteDate{
-                    CompanySiteFK = Cs.CompanySite.CompanyFK,
-                    WeekdayFK = id
-                });
-            }
+        public IActionResult InsertSite(CompanySite Cs){
+            Cs.CreateAt = DateTime.Now;
+            Cs.UpdateAt = DateTime.Now;
+            dbc.CompanySites.Add(Cs);
             dbc.SaveChanges();
 
-            return RedirectToAction("Sites",new{id = Cs.CompanySite.CompanyFK});
+            return RedirectToAction("Sites",new {id = Cs.CompanyFK});
         }
 
     }

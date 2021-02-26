@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CoreRoutes.Migrations
 {
     [DbContext(typeof(RoutesDBContext))]
-    [Migration("20210224232312_CompanySiteTable")]
-    partial class CompanySiteTable
+    [Migration("20210225232634_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -98,6 +98,28 @@ namespace CoreRoutes.Migrations
                     b.ToTable("CompanySites");
                 });
 
+            modelBuilder.Entity("CoreRoutes.Models.CompanySiteDate", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CompanySiteFK")
+                        .HasColumnType("int");
+
+                    b.Property<int>("WeekdayFK")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CompanySiteFK");
+
+                    b.HasIndex("WeekdayFK");
+
+                    b.ToTable("CompanySiteDates");
+                });
+
             modelBuilder.Entity("CoreRoutes.Models.Role", b =>
                 {
                     b.Property<int>("Id")
@@ -122,24 +144,55 @@ namespace CoreRoutes.Migrations
                         new
                         {
                             Id = 1,
-                            CreateAt = new DateTime(2021, 2, 24, 17, 23, 12, 231, DateTimeKind.Local).AddTicks(8137),
-                            UpdateAt = new DateTime(2021, 2, 24, 17, 23, 12, 232, DateTimeKind.Local).AddTicks(5908),
+                            CreateAt = new DateTime(2021, 2, 25, 17, 26, 33, 716, DateTimeKind.Local).AddTicks(8519),
+                            UpdateAt = new DateTime(2021, 2, 25, 17, 26, 33, 717, DateTimeKind.Local).AddTicks(6277),
                             UserRole = "Admin"
                         },
                         new
                         {
                             Id = 2,
-                            CreateAt = new DateTime(2021, 2, 24, 17, 23, 12, 232, DateTimeKind.Local).AddTicks(6204),
-                            UpdateAt = new DateTime(2021, 2, 24, 17, 23, 12, 232, DateTimeKind.Local).AddTicks(6209),
+                            CreateAt = new DateTime(2021, 2, 25, 17, 26, 33, 717, DateTimeKind.Local).AddTicks(6558),
+                            UpdateAt = new DateTime(2021, 2, 25, 17, 26, 33, 717, DateTimeKind.Local).AddTicks(6563),
                             UserRole = "Manager"
                         },
                         new
                         {
                             Id = 3,
-                            CreateAt = new DateTime(2021, 2, 24, 17, 23, 12, 232, DateTimeKind.Local).AddTicks(6211),
-                            UpdateAt = new DateTime(2021, 2, 24, 17, 23, 12, 232, DateTimeKind.Local).AddTicks(6212),
+                            CreateAt = new DateTime(2021, 2, 25, 17, 26, 33, 717, DateTimeKind.Local).AddTicks(6564),
+                            UpdateAt = new DateTime(2021, 2, 25, 17, 26, 33, 717, DateTimeKind.Local).AddTicks(6565),
                             UserRole = "Driver"
                         });
+                });
+
+            modelBuilder.Entity("CoreRoutes.Models.Route", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DeliveryDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("RouteName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ServiceTypeFK")
+                        .HasColumnType("int");
+
+                    b.Property<int>("State")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("UserFK")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ServiceTypeFK");
+
+                    b.HasIndex("UserFK");
+
+                    b.ToTable("Routes");
                 });
 
             modelBuilder.Entity("CoreRoutes.Models.ServiceType", b =>
@@ -161,7 +214,12 @@ namespace CoreRoutes.Migrations
                     b.Property<DateTime>("UpdateAt")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("VehicleFK")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("VehicleFK");
 
                     b.ToTable("ServiceTypes");
                 });
@@ -201,12 +259,44 @@ namespace CoreRoutes.Migrations
                         new
                         {
                             Id = 1,
-                            CreateAt = new DateTime(2021, 2, 24, 17, 23, 12, 261, DateTimeKind.Local).AddTicks(8153),
+                            CreateAt = new DateTime(2021, 2, 25, 17, 26, 33, 746, DateTimeKind.Local).AddTicks(9356),
                             Email = "eretana60@gmail.com",
-                            Password = "$2a$06$pE72w8/e44pwim0EQRy3cuXeivLDX4trxrEtqyyRmdmmnXPYVTdm2",
+                            Password = "$2a$06$BhfdMo5jiVmG2k7NfadrYertAvS.nQbcmRn6KzfjOK9xoormBIZvO",
                             RoleFK = 1,
-                            UpdateAt = new DateTime(2021, 2, 24, 17, 23, 12, 261, DateTimeKind.Local).AddTicks(8453),
+                            UpdateAt = new DateTime(2021, 2, 25, 17, 26, 33, 746, DateTimeKind.Local).AddTicks(9679),
                             Username = "eretana"
+                        });
+                });
+
+            modelBuilder.Entity("CoreRoutes.Models.Vehicle", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("VehicleName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Vehicles");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            VehicleName = "Pickup"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            VehicleName = "Camion Sisterna"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            VehicleName = "Camion Mundanza"
                         });
                 });
 
@@ -271,6 +361,53 @@ namespace CoreRoutes.Migrations
                         .IsRequired();
 
                     b.Navigation("Company");
+                });
+
+            modelBuilder.Entity("CoreRoutes.Models.CompanySiteDate", b =>
+                {
+                    b.HasOne("CoreRoutes.Models.CompanySite", "CompanySite")
+                        .WithMany()
+                        .HasForeignKey("CompanySiteFK")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CoreRoutes.Models.Weekday", "Weekday")
+                        .WithMany()
+                        .HasForeignKey("WeekdayFK")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CompanySite");
+
+                    b.Navigation("Weekday");
+                });
+
+            modelBuilder.Entity("CoreRoutes.Models.Route", b =>
+                {
+                    b.HasOne("CoreRoutes.Models.ServiceType", "ServiceType")
+                        .WithMany()
+                        .HasForeignKey("ServiceTypeFK")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CoreRoutes.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserFK");
+
+                    b.Navigation("ServiceType");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("CoreRoutes.Models.ServiceType", b =>
+                {
+                    b.HasOne("CoreRoutes.Models.Vehicle", "Vehicle")
+                        .WithMany()
+                        .HasForeignKey("VehicleFK")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Vehicle");
                 });
 
             modelBuilder.Entity("CoreRoutes.Models.User", b =>

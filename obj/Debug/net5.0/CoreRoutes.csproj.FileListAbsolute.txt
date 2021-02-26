@@ -81,3 +81,6 @@ C:\Storage\Develop\Aspnet\CoreRoutes\obj\Debug\net5.0\Razor\Views\Company\Sites.
 C:\Storage\Develop\Aspnet\CoreRoutes\obj\Debug\net5.0\Razor\Views\Shared\EditorTemplates\CheckboxItem.cshtml.g.cs
 C:\Storage\Develop\Aspnet\CoreRoutes\obj\Debug\net5.0\Razor\Views\Routes\Index.cshtml.g.cs
 C:\Storage\Develop\Aspnet\CoreRoutes\obj\Debug\net5.0\Razor\Views\Routes\Create.cshtml.g.cs
+C:\Storage\Develop\Aspnet\CoreRoutes\obj\Debug\net5.0\Razor\Views\Routes\Sites.cshtml.g.cs
+C:\Storage\Develop\Aspnet\CoreRoutes\obj\Debug\net5.0\Razor\Views\Vehicles\Index.cshtml.g.cs
+C:\Storage\Develop\Aspnet\CoreRoutes\obj\Debug\net5.0\Razor\Views\Vehicles\Create.cshtml.g.cs

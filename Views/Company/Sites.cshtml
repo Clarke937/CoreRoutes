@@ -1,4 +1,4 @@
-@model CompanySitesVM
+@model CompanySite
 <div class="row">
     <div class="col-8">
         <div class="card">
@@ -10,43 +10,35 @@
             </div>
             <div class="card-body">
                 <form asp-action="InsertSite" method="POST" class="row">
-                    <input type="hidden" asp-for="CompanySite.CompanyFK" value="@Model.IdCompany">
+                    <input type="hidden" asp-for="CompanyFK" value="@ViewBag.Company.Id">
                     <div class="form-group col-12">
                         <label for="">Site Name:</label>
-                        <input type="text" class="form-control form-control-solid" asp-for="CompanySite.SiteName">
+                        <input type="text" class="form-control form-control-solid" asp-for="SiteName">
                     </div>
                     <div class="form-group col-6">
                         <label for="">State:</label>
-                        <input type="text" class="form-control form-control-solid" asp-for="CompanySite.State">
+                        <input type="text" class="form-control form-control-solid" asp-for="State">
                     </div>
                     <div class="form-group col-6">
                         <label for="">City:</label>
-                        <input type="text" class="form-control form-control-solid" asp-for="CompanySite.City">
+                        <input type="text" class="form-control form-control-solid" asp-for="City">
                     </div>
                     <div class="form-group col-12">
                         <label for="">Address:</label>
-                        <input type="text" class="form-control form-control-solid" asp-for="CompanySite.Address">
+                        <input type="text" class="form-control form-control-solid" asp-for="Address">
                     </div>
                     <div class="form-group col-4">
                         <label for="">Postal Code:</label>
-                        <input type="text" class="form-control form-control-solid" asp-for="CompanySite.PostalCode">
+                        <input type="text" class="form-control form-control-solid" asp-for="PostalCode">
                     </div>
                     <div class="form-group col-4">
                         <label for="">Contact:</label>
-                        <input type="text" class="form-control form-control-solid" asp-for="CompanySite.Contact">
+                        <input type="text" class="form-control form-control-solid" asp-for="Contact">
                     </div>
                     <div class="form-group col-4">
                         <label for="">Phone:</label>
-                        <input type="text" class="form-control form-control-solid" asp-for="CompanySite.Phone">
+                        <input type="text" class="form-control form-control-solid" asp-for="Phone">
                     </div>
-                    
-                    <div class="form-group col-12 mb-1">
-                        <label for="">Delivery Days:</label>
-                    </div>
-                    <div class="form-group col-3">
-                        @Html.EditorFor(x => x.Weekdays)
-                    </div>
-                    
                     <div class="form-group col-12 mt-3">
                         <button type="submit" class="btn btn-success rounded-pill">Save New Site</button>
                     </div>

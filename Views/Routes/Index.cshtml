@@ -3,29 +3,25 @@
         <div class="card">
             <div class="card-header">
                 <i class="fas fa-route"></i>
-                <b>List Of Established Routes</b>
+                <b>List Of Daily Routes</b>
             </div>
             <div class="card-body">
                 <table class="table table-bordered table-hovered">
                     <tr>
-                        <th>Id</th>
-                        <th>Route Name</th>
-                        <th>Route Date</th>
-                        <th>Service Type</th>
-                        <th>Route Sites</th>
-                        <th>State</th>
-                        <th>Options</th>
+                        <th class="fit">Id</th>
+                        <th>Weekday</th>
+                        <th class="fit">Route Sites</th>
                     </tr>
-                    @foreach (Route route in ViewBag.Routes)
+                    @foreach (Weekday wd in ViewBag.Weekdays)
                     {
                         <tr>
-                            <td>@route.Id</td>
-                            <td>@route.RouteName</td>
-                            <td>@route.DeliveryDate</td>
-                            <td>@route.ServiceType.ServiceName</td>
-                            <td><a href="#" class="link">Sites</a></td>
-                            <td><span class="badge badge-warning">Pending</span></td>
-                            <th></th>
+                            <td class="fit">@wd.Id</td>
+                            <td>@wd.DayName</td>
+                            <td class="fit">
+                                <a asp-controller="Routes" asp-action="Sites" asp-route-id="@wd.Id" class="btn btn-primary rounded-pill btn-sm">
+                                    <i class="fa fa-store-alt mr-2"></i> Delivery Sites
+                                </a>
+                            </td>
                         </tr>
                     }
                 </table>
@@ -36,7 +32,6 @@
         <div class="card">
             <div class="card-body py-5 text-center">
                 <img src="~/img/undraw/route.png" alt="" class="img-fluid">
-                <a asp-action="Create" asp-controller="Routes" class="btn btn-success rounded-pill mt-5">Create New Route</a>
             </div>
         </div>
     </div>

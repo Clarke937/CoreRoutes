@@ -1,0 +1,27 @@
+@model Vehicle
+<div class="row">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header">
+                <a asp-action="Index" asp-controller="Vehicles" class="btn btn-icon btn-xs btn-light mr-2">
+                    <i class="fa fa-arrow-left"></i>
+                </a>
+                <i class="fa fa-truck-plow mr-2"></i>
+                <b>Vehicle List</b>
+            </div>
+            <div class="card-body">
+                <form action="Insert" method="POST" class="row">
+                    <div class="form-group col-12">
+                        <label for="">Vehicle Name</label>
+                        <input type="text" asp-for="VehicleName" class="form-control form-control-solid">
+                    </div>
+                    <div class="form-group col-12 mt-5">
+                        <button type="submit" class="btn btn-success rounded-pill">
+                            Create New Vehicle
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

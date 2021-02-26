@@ -16,13 +16,14 @@ namespace CoreRoutes.Models{
         public DbSet<ServiceType> ServiceTypes {get;set;}
         public DbSet<Weekday> Weekdays {get;set;}
         public DbSet<CompanySite> CompanySites {get;set;}
-        public DbSet<CompanySiteDate> CompanySiteDates {get;set;}
         public DbSet<Route> Routes {get;set;}
+        public DbSet<Vehicle> Vehicles {get;set;}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //Catalogos
             SeedWeekdays(modelBuilder);
+            SeedVehicles(modelBuilder);
             SeedRoles(modelBuilder);
             //Dependencias
             SeedUsers(modelBuilder);
@@ -59,6 +60,14 @@ namespace CoreRoutes.Models{
                 new Weekday{Id = 5, DayName = "Friday"},
                 new Weekday{Id = 6, DayName = "Saturday"},
                 new Weekday{Id = 7, DayName = "Sunday"}
+            );
+        }
+
+        private void SeedVehicles(ModelBuilder builder){
+            builder.Entity<Vehicle>().HasData(
+                new Vehicle{Id = 1, VehicleName="Pickup"},
+                new Vehicle{Id = 2, VehicleName="Camion Sisterna"},
+                new Vehicle{Id = 3, VehicleName="Camion Mundanza"}
             );
         }
 

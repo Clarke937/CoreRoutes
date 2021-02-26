@@ -15608,6 +15608,16 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Storage\\Develop\\Aspnet\\CoreRoutes\\Views\\Vehicles\\Index.cshtml",
+      "TargetPath": "Views\\Vehicles\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Storage\\Develop\\Aspnet\\CoreRoutes\\Views\\Routes\\Sites.cshtml",
+      "TargetPath": "Views\\Routes\\Sites.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Storage\\Develop\\Aspnet\\CoreRoutes\\Views\\Routes\\Create.cshtml",
       "TargetPath": "Views\\Routes\\Create.cshtml",
       "FileKind": "mvc"
@@ -15650,6 +15660,11 @@
     {
       "FilePath": "c:\\Storage\\Develop\\Aspnet\\CoreRoutes\\Views\\Users\\Index.cshtml",
       "TargetPath": "Views\\Users\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Storage\\Develop\\Aspnet\\CoreRoutes\\Views\\Vehicles\\Create.cshtml",
+      "TargetPath": "Views\\Vehicles\\Create.cshtml",
       "FileKind": "mvc"
     },
     {

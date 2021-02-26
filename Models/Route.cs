@@ -8,21 +8,27 @@ namespace CoreRoutes.Models{
     public class Route{
 
         public int Id {get;set;}
-        public string RouteName {get;set;}
-        public DateTime DeliveryDate {get;set;}
-        public int State {get;set;}
+        
+        //
+        [ForeignKey("CompanySite")]
+        public int CompanySiteFK {get;set;}
+        [ForeignKey("CompanySiteFK")]
+        public CompanySite CompanySite {get;set;} 
+
 
         //
-        [ForeignKey("User")]
-        public int? UserFK {get;set;}
-        [ForeignKey("UserFK")]
-        public virtual User User {get;set;}
+        [ForeignKey("Weekday")]
+        public int WeekdayFK {get;set;}
+        [ForeignKey("WeekdayFK")]
+        public Weekday Weekday {get;set;}
+
 
         //
         [ForeignKey("ServiceType")]
         public int ServiceTypeFK {get;set;}
         [ForeignKey("ServiceTypeFK")]
-        public virtual ServiceType ServiceType {get;set;}
+        public ServiceType ServiceType {get;set;}
+
     }
 
 }

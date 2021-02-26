@@ -9,37 +9,32 @@ using CoreRoutes.Models;
 
 namespace CoreRoutes.Controllers
 {
-    public class ServicesController : Controller
+    public class VehiclesController : Controller
     {
         
         public RoutesDBContext dbc {get;set;}
 
-        public ServicesController(RoutesDBContext app){
+        public VehiclesController(RoutesDBContext app){
             this.dbc = app;
         }
 
         public IActionResult Index()
         {
-            ViewBag.ServicesTypes = dbc.ServiceTypes.ToList();
-            foreach(ServiceType se in ViewBag.ServicesTypes){
-                se.Vehicle = dbc.Vehicles.Find(se.VehicleFK);
-            }
-            return View();
-        }
-
-        public IActionResult Create(){
             ViewBag.Vehicles = dbc.Vehicles.ToList();
             return View();
         }
 
+        public IActionResult Create(){
+            return View();
+        }
+
         [HttpPost]
-        public IActionResult Insert(ServiceType ser){
-            ser.CreateAt = DateTime.Now;
-            ser.UpdateAt = DateTime.Now;
-            dbc.ServiceTypes.Add(ser);
+        public IActionResult Insert(Vehicle veh){
+            dbc.Add(veh);
             dbc.SaveChanges();
             return RedirectToAction("Index");
         }
+        
 
     }
 }

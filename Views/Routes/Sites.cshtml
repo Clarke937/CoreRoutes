@@ -1,0 +1,124 @@
+@model Route
+<div class="row">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header">
+                <a asp-action="Index" asp-controller="Routes" class="btn btn-icon btn-xs btn-light"><i class="fa fa-arrow-left"></i></a>
+                <i class="fas fa-route mr-2"></i>
+                <b>List Of Sites for @ViewBag.Weekday.DayName</b>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered">
+
+                    @if(ViewBag.Routes.Count == 0){
+                        <tr>
+                            <th class="text-warning">
+                                <i class="fa fa-exclamation-triangle mr-3"></i>
+                                No Company Sites add for this day
+                            </th>
+                        </tr>
+                    }
+
+                    @for(int i = 0; i < ViewBag.Routes.Count; i++){
+                        Route route = ViewBag.Routes[i];
+
+                        if(i == 0){
+                            <tr>
+                                <th colspan="5" class="text-success">
+                                    <i class="fas fa-box-check mr-2"></i>
+                                    @route.ServiceType.ServiceName
+                                </th>
+                            </tr>
+                        }
+
+
+                        <tr>
+                            <td>@route.CompanySite.SiteName</td>
+                            <td>@route.CompanySite.State</td>
+                            <td>@route.CompanySite.City</td>
+                            <td>
+                                <a href="#" class="link">View Full Address</a>
+                            </td>
+                            <td class="fit">
+                                <a href="#" class="btn btn-icon btn-sm btn-light">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                            </td>
+                        </tr>
+
+                        if(ViewBag.Routes.Count > (i+1)){
+                            Route nextroute = ViewBag.Routes[i+1];
+                            if(nextroute.ServiceTypeFK != route.ServiceTypeFK){
+                                <tr>
+                                    <th colspan="5" class="text-success">
+                                        <i class="fas fa-box-check mr-2"></i>
+                                        @nextroute.ServiceType.ServiceName
+                                    </th>
+                                </tr>
+                            }
+                        }
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-route mr-2"></i>
+                <b>Add Company Site</b>
+            </div>
+            <div class="card-body">
+                <form asp-action="Create" asp-controller="Routes" method="POST" class="row">
+                    <input type="hidden" asp-for="WeekdayFK" value="@ViewBag.Weekday.Id">
+                    <div class="form-group col-12">
+                        <label for="">Company Name:</label>
+                        <select class="form-control form-control-solid" id="companiesDropdown">
+                            @foreach (Company co in ViewBag.Companies){
+                                <option value="@co.Id">@co.CompanyName</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group col-12">
+                        <label for="">Company Site:</label>
+                        <select class="form-control form-control-solid" asp-for="CompanySiteFK" id="sitesDropdown">
+                            @foreach (CompanySite cs in ViewBag.Sites){
+                                <option value="@cs.Id">@cs.SiteName</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group col-12">
+                        <label for="">Service Type:</label>
+                        <select class="form-control form-control-solid" asp-for="ServiceTypeFK" id="sitesDropdown">
+                            @foreach (ServiceType st in ViewBag.ServiceTypes){
+                                <option value="@st.Id">@st.ServiceName</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group col-12 mt-5 text-center">
+                        <button type="submit" class="btn btn-success rounded-pill">Add Site to Route</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-4"></div>
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function(){
+            $("#companiesDropdown").on("change",function(){
+                var companyId = $(this).val();
+                $.get("/Routes/CompanySitesResult", {idcompany: companyId},function(data){
+                    console.log(data);
+                    $("#sitesDropdown").empty();
+                    $.each(data,function(index,row){
+                        var option = "<option value='" + row.id + "'>" + row.siteName + "</option>";
+                        $("#sitesDropdown").append(option);
+                    });
+                });
+            });
+        });
+    </script>
+}
