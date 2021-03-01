@@ -94,3 +94,4 @@ C:\Storage\Develop\Aspnet\CoreRoutes\obj\Debug\net5.0\Razor\Views\Choose\Notfoun
 C:\Storage\Develop\Aspnet\CoreRoutes\obj\Debug\net5.0\Razor\Views\Services\Edit.cshtml.g.cs
 C:\Storage\Develop\Aspnet\CoreRoutes\obj\Debug\net5.0\Razor\Views\Routes\Notfound.cshtml.g.cs
 C:\Storage\Develop\Aspnet\CoreRoutes\obj\Debug\net5.0\Razor\Views\Company\Edit.cshtml.g.cs
+C:\Storage\Develop\Aspnet\CoreRoutes\obj\Debug\net5.0\Razor\Views\Delivery\Index.cshtml.g.cs

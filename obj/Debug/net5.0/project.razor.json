@@ -15668,6 +15668,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Storage\\Develop\\Aspnet\\CoreRoutes\\Views\\Delivery\\Index.cshtml",
+      "TargetPath": "Views\\Delivery\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Storage\\Develop\\Aspnet\\CoreRoutes\\Views\\Company\\Sites.cshtml",
       "TargetPath": "Views\\Company\\Sites.cshtml",
       "FileKind": "mvc"

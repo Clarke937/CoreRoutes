@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-truck-loading mr-2"></i>
+                <b>Delivery States Results</b>
+            </div>
+            <div class="card-body">
+                <table class="table table-bordered table-hovered">
+                    <tr>
+                        <th>Delivery Date</th>
+                        <th>Weekday</th>
+                        <th>Driver Username</th>
+                        <th>Service Type</th>
+                        <th>Price</th>
+                        <th>State</th>
+                    </tr>
+                    @foreach (DeliveryChecking del in ViewBag.Deliveries){
+                        <tr>
+                            <td>@del.DeliveryDate.ToString("dddd, dd MMMM yyyy")</td>
+                            <td>@del.DeliveryDate.DayOfWeek</td>
+                            <td>@del.User.Username</td>
+                            <td>@del.ServiceType.ServiceName</td>
+                            <td>@(String.Format("${0:0.00}",del.ServiceType.Price))</td>
+                            <td><span class="badge badge-primary px-2">@del.DeliveryState.State</span></td>
+                        </tr>
+                    }
+                </table>
+            </div>
+        </div>
+        
+    </div>
+</div>
