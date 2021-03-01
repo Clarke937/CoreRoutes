@@ -1,0 +1,28 @@
+@model Vehicle
+<div class="row">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header">
+                <a class="btn btn-sm btn-icon btn-light" asp-action="Index" asp-controller="Vehicles" >
+                    <i class="fa fa-arrow-left"></i>
+                </a>
+                <i class="fa fa-truck-plow mx-2"></i><b>Edit Vehicle Information</b>
+            </div>
+            <div class="card-body">
+                <form asp-action="Update" asp-controller="Vehicles" method="POST">
+                    <input type="hidden" asp-for="Id" value="@ViewBag.Vehicle.Id">
+                    <div class="form-group">
+                        <label>Vehicle Name</label>
+                        <input type="text" class="form-control form-control-solid" asp-for="VehicleName" value="@ViewBag.Vehicle.VehicleName">
+                    </div>
+                    <div class="form-group mt-5">
+                        <button type="submit" class="btn btn-success rounded-pill">
+                            Save Changes
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-4"></div>
+</div>

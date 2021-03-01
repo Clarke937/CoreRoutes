@@ -32,11 +32,24 @@ namespace CoreRoutes.Controllers
             return View();
         }
 
+        public IActionResult Edit(int id){
+            ViewBag.Vehicles = dbc.Vehicles.ToList();
+            ViewBag.Service = dbc.ServiceTypes.Find(id);
+            return View();
+        }
+
         [HttpPost]
         public IActionResult Insert(ServiceType ser){
             ser.CreateAt = DateTime.Now;
             ser.UpdateAt = DateTime.Now;
             dbc.ServiceTypes.Add(ser);
+            dbc.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        [HttpPost]
+        public IActionResult Update(ServiceType ser){
+            dbc.ServiceTypes.Update(ser);
             dbc.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -14,10 +14,12 @@
         <a asp-action="Index" asp-controller="Home" class="navbar-brand active">Core Routes</a>
         <ul class="navbar-nav align-items-center ml-auto">
             <li class="nav-item">
-                <a href="#" class="btn btn-icon btn-transparent-light"><i class="fas fa-user"></i></a>
+                <a class="btn btn-icon btn-transparent-light" asp-controller="Auth" asp-action="Index">
+                    <i class="fas fa-user"></i>
+                </a>
             </li>
             <li class="nav-item">
-                <a asp-action="Configs" asp-controller="Home" class="btn btn-icon btn-transparent-light"><i class="fas fa-cog"></i></a>
+                <a href="#" class="btn btn-icon btn-transparent-light"><i class="fas fa-cog"></i></a>
             </li>
         </ul>
     </nav>
@@ -27,12 +29,13 @@
             <nav class="sidenav shadow-right sidenav-dark">
                 <div class="sidenav-menu">
                     <div class="nav accordion" id="accordionSidenav">
+
                         <div class="sidenav-menu-heading">Daily Work</div>
                         <a class="nav-link" asp-action="Index" asp-controller="Routes">
                             <div class="nav-link-icon"><i class="fas fa-route"></i></div>
                             <span>Set Route</span>
                         </a>
-                        <a class="nav-link">
+                        <a class="nav-link" asp-action="Index" asp-controller="Choose">
                             <div class="nav-link-icon"><i class="fas fa-map-marked-alt"></i></div>
                             <span>Choose Route</span>
                         </a>
@@ -65,7 +68,7 @@
                 <div class="sidenav-footer">
                     <div class="sidenav-footer-content">
                         <span class="sidenav-footer-subtitle">Create By:</span>
-                        <p class="sidenav-footer-title">Edgar Retana</p>
+                        <p class="sidenav-footer-title">Hematechnologies</p>
                     </div>
                 </div>
             </nav>

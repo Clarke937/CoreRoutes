@@ -6,7 +6,7 @@
                 <a class="btn btn-sm btn-icon btn-light" asp-action="Index" asp-controller="Company" >
                     <i class="fa fa-arrow-left"></i>
                 </a>
-                <i class="fa fa-store-alt mx-2"></i><b>Add New Site For The Company</b>
+                <i class="fa fa-store-alt mx-2"></i><b>Add a New Site For @ViewBag.Company.CompanyName</b>
             </div>
             <div class="card-body">
                 <form asp-action="InsertSite" method="POST" class="row">

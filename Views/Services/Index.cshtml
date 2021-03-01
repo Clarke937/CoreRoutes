@@ -21,7 +21,7 @@
                             <td>@item.Price</td>
                             <td>@item.Vehicle.VehicleName</td>
                             <td class="fit">
-                                <a href="#" class="btn btn-icon btn-light btn-sm"><i class="fa fa-edit"></i></a>
+                                <a asp-route-id="@item.Id" asp-action="Edit" asp-controller="Services" class="btn btn-icon btn-light btn-sm"><i class="fa fa-edit"></i></a>
                                 <a href="#" class="btn btn-icon btn-light btn-sm"><i class="fa fa-times"></i></a>
                             </td>
                         </tr>

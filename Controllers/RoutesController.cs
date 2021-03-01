@@ -6,19 +6,33 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using CoreRoutes.Models;
+using Microsoft.AspNetCore.Http;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace CoreRoutes.Controllers{
 
     public class RoutesController : Controller{
         
         public RoutesDBContext dbc {get;set;}
+        public User currentUser {get;set;}
+
         public RoutesController(RoutesDBContext app){
             this.dbc = app;
         }
 
         public IActionResult Index(){
             
-            ViewBag.Weekdays = dbc.Weekdays.ToList();
+            if(HttpContext.Session.GetInt32("currentUser").HasValue){
+                currentUser = dbc.Users.Find(HttpContext.Session.GetInt32("currentUser"));
+            }
+            
+            if(currentUser != null && currentUser.RoleFK < 3){ 
+                ViewBag.Weekdays = dbc.Weekdays.ToList();
+            }else{
+                return RedirectToAction("Notfound");
+            }
+            
             return View();
         }
 
@@ -53,6 +67,10 @@ namespace CoreRoutes.Controllers{
         public JsonResult CompanySitesResult(int idcompany){
             List<CompanySite> Sites = dbc.CompanySites.Where(x => x.CompanyFK == idcompany).ToList();
             return Json(Sites);
+        }
+
+        public IActionResult Notfound(){
+            return View();
         }
 
 

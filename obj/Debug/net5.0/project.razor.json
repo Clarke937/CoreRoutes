@@ -15613,6 +15613,11 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Storage\\Develop\\Aspnet\\CoreRoutes\\Views\\Choose\\Index.cshtml",
+      "TargetPath": "Views\\Choose\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Storage\\Develop\\Aspnet\\CoreRoutes\\Views\\Routes\\Sites.cshtml",
       "TargetPath": "Views\\Routes\\Sites.cshtml",
       "FileKind": "mvc"
@@ -15628,13 +15633,28 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Storage\\Develop\\Aspnet\\CoreRoutes\\Views\\Vehicles\\Delete.cshtml",
+      "TargetPath": "Views\\Vehicles\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Storage\\Develop\\Aspnet\\CoreRoutes\\Views\\Users\\Edit.cshtml",
       "TargetPath": "Views\\Users\\Edit.cshtml",
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Storage\\Develop\\Aspnet\\CoreRoutes\\Views\\Company\\Delete.cshtml",
+      "TargetPath": "Views\\Company\\Delete.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Storage\\Develop\\Aspnet\\CoreRoutes\\Views\\_ViewImports.cshtml",
       "TargetPath": "Views\\_ViewImports.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Storage\\Develop\\Aspnet\\CoreRoutes\\Views\\Routes\\Notfound.cshtml",
+      "TargetPath": "Views\\Routes\\Notfound.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15658,8 +15678,23 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Storage\\Develop\\Aspnet\\CoreRoutes\\Views\\Company\\Edit.cshtml",
+      "TargetPath": "Views\\Company\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Storage\\Develop\\Aspnet\\CoreRoutes\\Views\\Vehicles\\Edit.cshtml",
+      "TargetPath": "Views\\Vehicles\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Storage\\Develop\\Aspnet\\CoreRoutes\\Views\\Users\\Index.cshtml",
       "TargetPath": "Views\\Users\\Index.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Storage\\Develop\\Aspnet\\CoreRoutes\\Views\\Shared\\_Theme.cshtml",
+      "TargetPath": "Views\\Shared\\_Theme.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15668,8 +15703,18 @@
       "FileKind": "mvc"
     },
     {
+      "FilePath": "c:\\Storage\\Develop\\Aspnet\\CoreRoutes\\Views\\Services\\Edit.cshtml",
+      "TargetPath": "Views\\Services\\Edit.cshtml",
+      "FileKind": "mvc"
+    },
+    {
       "FilePath": "c:\\Storage\\Develop\\Aspnet\\CoreRoutes\\Views\\Shared\\EditorTemplates\\CheckboxItem.cshtml",
       "TargetPath": "Views\\Shared\\EditorTemplates\\CheckboxItem.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Storage\\Develop\\Aspnet\\CoreRoutes\\Views\\Choose\\Notfound.cshtml",
+      "TargetPath": "Views\\Choose\\Notfound.cshtml",
       "FileKind": "mvc"
     },
     {
@@ -15695,6 +15740,11 @@
     {
       "FilePath": "c:\\Storage\\Develop\\Aspnet\\CoreRoutes\\Views\\Home\\Privacy.cshtml",
       "TargetPath": "Views\\Home\\Privacy.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "c:\\Storage\\Develop\\Aspnet\\CoreRoutes\\Views\\Auth\\Login.cshtml",
+      "TargetPath": "Views\\Auth\\Login.cshtml",
       "FileKind": "mvc"
     },
     {

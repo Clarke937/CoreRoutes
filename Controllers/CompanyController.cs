@@ -35,6 +35,16 @@ namespace CoreRoutes.Controllers
             return View();
         }
 
+        public IActionResult Delete(int id){
+            ViewBag.Company = dbc.Companies.Find(id);
+            return View();
+        }
+
+        public IActionResult Edit(int id){
+            ViewBag.Company = dbc.Companies.Find(id);
+            return View();
+        }
+
         [HttpPost]
         public IActionResult Update(Company com){
             com.UpdateAt = DateTime.Now;
@@ -51,6 +61,14 @@ namespace CoreRoutes.Controllers
             dbc.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        [HttpPost]
+        public IActionResult Drop(Company com){
+            dbc.Companies.Remove(com);
+            dbc.SaveChanges();
+            return RedirectToAction("Index");
+        }    
+
 
         [HttpPost]
         public IActionResult InsertSite(CompanySite Cs){

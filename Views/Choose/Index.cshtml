@@ -1,0 +1,116 @@
+@{
+    string today = DateTime.Now.ToString("dddd, dd MMMM yyyy").ToUpper();
+}
+
+@model DeliveryChecking
+<div class="row">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-map-marked-alt mr-2"></i>
+                <b>Select a Route</b>
+            </div>
+            <div class="card-body">
+                <div class="row mt-4">
+                    <div class="col-4">
+                        <div class="border rounded-lg p-5 text-center">
+                            <img src="~/img/undraw/avatar.png" alt="" class="img-fluid rounded-circle">
+                            <h5 class="mt-3 mb-0">@ViewBag.Driver.Username</h5>
+                            <b class="text-indigo">@ViewBag.Driver.Role.UserRole</b>
+                        </div>
+                    </div>
+                    <div class="col-8">
+                        <b class="text-success">TODAY: @today</b>
+                        <form asp-action="Index" asp-controller="Choose" method="GET" class="mt-2">
+                            <div class="form-group">
+                                <label for="">Service Date</label>
+                                <input type="date" class="form-control form-control-solid" name="date">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Service Type</label>
+                                <select class="form-control form-control-solid" name="service">
+                                    @foreach (ServiceType st in ViewBag.Services)
+                                    {
+                                        <option value="@st.Id">@st.ServiceName</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="form-group mt-5">
+                                <button type="submit" class="btn btn-primary rounded-pill">
+                                    Show me the route
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <table class="table table-bordered">
+                            @for(int i = 0; i < ViewBag.SearchRoutes.Count; i++){
+                                Route route = ViewBag.SearchRoutes[i];
+
+                                if(i == 0){
+                                    <tr>
+                                        <th colspan="5" class="text-primary">
+                                            <p class="text-bold m-0">@route.ServiceType.ServiceName </p>
+                                            <span class="m-0 small text-muted">Delivery Route for @ViewBag.SearchDate.ToString("dddd, dd MMMM yyyy")</span> 
+                                            
+                                            @if(ViewBag.RouteState.Id == 1){
+                                                <span class="badge badge-success ml-2">@ViewBag.RouteState.State</span>
+                                            }else{
+                                                <span class="badge bg-light ml-2">@ViewBag.RouteState.State by @ViewBag.RouteUser.Username</span>
+                                            }
+                                        </th>
+                                    </tr>
+                                }
+
+                                <tr>
+                                    <th>Company Site</th>
+                                    <th>State</th>
+                                    <th>City</th>
+                                    <th>Address</th>
+                                </tr>
+                        
+
+                                <tr>
+                                    <td>@route.CompanySite.SiteName</td>
+                                    <td>@route.CompanySite.State</td>
+                                    <td>@route.CompanySite.City</td>
+                                    <td colspan="3">@route.CompanySite.Address</td>
+                                </tr>
+                            }
+                        </table>
+                    </div>
+                    <div class="col-12 mt-2">
+                        @if(ViewBag.SearchRoutes.Count > 0){
+                            @if(ViewBag.RouteState.Id == 1){
+                                int weekid = ViewBag.SearchDate.DayOfWeek == 0 ? 7 : (int) ViewBag.SearchDate.DayOfWeek;
+
+                                <form asp-action="ChooseDelivery" asp-controller="Choose" method="POST">
+                                    <input type="hidden" asp-for="DeliveryDate" value="@ViewBag.SearchDate">
+                                    <input type="hidden" asp-for="UserFK" value="@ViewBag.Driver.Id">
+                                    <input type="hidden" asp-for="ServiceTypeFK" value="@ViewBag.SearchRoutes[0].ServiceTypeFK">
+                                    
+                                    <button class="btn btn-success rounded-pill" type="submit">
+                                        <i class="fal fa-check mr-2"></i> Choose this route
+                                    </button>
+                                </form>
+                            }else{
+                                <button class="btn btn-light rounded-pill" disabled>
+                                    <i class="fal fa-times mr-2"></i> Choose this route
+                                </button>
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="card">
+            <div class="card-body py-5 text-center">
+                <img src="~/img/undraw/choose.png" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+@model Company
+<div class="row">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header">
+                <a class="btn btn-sm btn-icon btn-light" asp-action="Index" asp-controller="Company" >
+                    <i class="fa fa-arrow-left"></i>
+                </a>
+                <i class="fa fa-store-alt mx-2"></i><b>Delete Company </b>
+            </div>
+            <div class="card-body">
+                <p><b>Company Id:</b> @ViewBag.Company.Id</p>
+                <p><b>Company Name:</b> @ViewBag.Company.CompanyName</p>
+                <p><b>Email:</b> @ViewBag.Company.Email</p>
+                <p><b>Phone:</b> @ViewBag.Company.Phone</p>
+
+                <form asp-action="Drop" asp-controller="Company" class="mt-4" method="POST">
+                    <input type="hidden" asp-for="Id">
+                    <button type="submit" class="btn btn-danger rounded-pill">Delete Company</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col"></div>
+</div>

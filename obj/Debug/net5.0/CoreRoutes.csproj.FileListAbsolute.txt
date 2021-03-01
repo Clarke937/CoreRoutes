@@ -84,3 +84,13 @@ C:\Storage\Develop\Aspnet\CoreRoutes\obj\Debug\net5.0\Razor\Views\Routes\Create.
 C:\Storage\Develop\Aspnet\CoreRoutes\obj\Debug\net5.0\Razor\Views\Routes\Sites.cshtml.g.cs
 C:\Storage\Develop\Aspnet\CoreRoutes\obj\Debug\net5.0\Razor\Views\Vehicles\Index.cshtml.g.cs
 C:\Storage\Develop\Aspnet\CoreRoutes\obj\Debug\net5.0\Razor\Views\Vehicles\Create.cshtml.g.cs
+C:\Storage\Develop\Aspnet\CoreRoutes\obj\Debug\net5.0\Razor\Views\Choose\Index.cshtml.g.cs
+C:\Storage\Develop\Aspnet\CoreRoutes\obj\Debug\net5.0\Razor\Views\Vehicles\Edit.cshtml.g.cs
+C:\Storage\Develop\Aspnet\CoreRoutes\obj\Debug\net5.0\Razor\Views\Vehicles\Delete.cshtml.g.cs
+C:\Storage\Develop\Aspnet\CoreRoutes\obj\Debug\net5.0\Razor\Views\Company\Delete.cshtml.g.cs
+C:\Storage\Develop\Aspnet\CoreRoutes\obj\Debug\net5.0\Razor\Views\Auth\Login.cshtml.g.cs
+C:\Storage\Develop\Aspnet\CoreRoutes\obj\Debug\net5.0\Razor\Views\Shared\_Theme.cshtml.g.cs
+C:\Storage\Develop\Aspnet\CoreRoutes\obj\Debug\net5.0\Razor\Views\Choose\Notfound.cshtml.g.cs
+C:\Storage\Develop\Aspnet\CoreRoutes\obj\Debug\net5.0\Razor\Views\Services\Edit.cshtml.g.cs
+C:\Storage\Develop\Aspnet\CoreRoutes\obj\Debug\net5.0\Razor\Views\Routes\Notfound.cshtml.g.cs
+C:\Storage\Develop\Aspnet\CoreRoutes\obj\Debug\net5.0\Razor\Views\Company\Edit.cshtml.g.cs

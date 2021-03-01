@@ -18,13 +18,17 @@ namespace CoreRoutes.Models{
         public DbSet<CompanySite> CompanySites {get;set;}
         public DbSet<Route> Routes {get;set;}
         public DbSet<Vehicle> Vehicles {get;set;}
+        public DbSet<DeliveryState> DeliveryStates {get;set;}
+        public DbSet<DeliveryChecking> DeliveryCheckings {get;set;}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //Catalogos
+            SeedDeliveryStates(modelBuilder);
             SeedWeekdays(modelBuilder);
             SeedVehicles(modelBuilder);
             SeedRoles(modelBuilder);
+            
             //Dependencias
             SeedUsers(modelBuilder);
         }
@@ -47,6 +51,15 @@ namespace CoreRoutes.Models{
                     CreateAt = DateTime.Now,
                     UpdateAt = DateTime.Now,
                     RoleFK = 1
+                },
+                new User{
+                    Id = 2,
+                    Username = "hectormarcia", 
+                    Email = "hector@gmail.com",
+                    Password = Crypter.Blowfish.Crypt("hector123"),
+                    CreateAt = DateTime.Now,
+                    UpdateAt = DateTime.Now,
+                    RoleFK = 3
                 }
             );
         }
@@ -66,8 +79,19 @@ namespace CoreRoutes.Models{
         private void SeedVehicles(ModelBuilder builder){
             builder.Entity<Vehicle>().HasData(
                 new Vehicle{Id = 1, VehicleName="Pickup"},
-                new Vehicle{Id = 2, VehicleName="Camion Sisterna"},
-                new Vehicle{Id = 3, VehicleName="Camion Mundanza"}
+                new Vehicle{Id = 2, VehicleName="Straight Truck"},
+                new Vehicle{Id = 3, VehicleName="Trailer Truck"}
+            );
+        }
+
+        private void SeedDeliveryStates(ModelBuilder builder){
+            builder.Entity<DeliveryState>().HasData(
+                new DeliveryState{Id=1, State="Available"},
+                new DeliveryState{Id=2, State="Selected"},
+                new DeliveryState{Id=3, State="Working"},
+                new DeliveryState{Id=4, State="Delivered"},
+                new DeliveryState{Id=5, State="Skipped"},
+                new DeliveryState{Id=6, State="Undelivered"}
             );
         }
 

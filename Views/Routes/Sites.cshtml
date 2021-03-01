@@ -31,14 +31,11 @@
                             </tr>
                         }
 
-
                         <tr>
                             <td>@route.CompanySite.SiteName</td>
                             <td>@route.CompanySite.State</td>
                             <td>@route.CompanySite.City</td>
-                            <td>
-                                <a href="#" class="link">View Full Address</a>
-                            </td>
+                            <td><a href="#" class="link">View Full Address</a></td>
                             <td class="fit">
                                 <a href="#" class="btn btn-icon btn-sm btn-light">
                                     <i class="fa fa-edit"></i>
@@ -111,7 +108,6 @@
             $("#companiesDropdown").on("change",function(){
                 var companyId = $(this).val();
                 $.get("/Routes/CompanySitesResult", {idcompany: companyId},function(data){
-                    console.log(data);
                     $("#sitesDropdown").empty();
                     $.each(data,function(index,row){
                         var option = "<option value='" + row.id + "'>" + row.siteName + "</option>";

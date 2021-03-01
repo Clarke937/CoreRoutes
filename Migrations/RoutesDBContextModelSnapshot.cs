@@ -96,6 +96,83 @@ namespace CoreRoutes.Migrations
                     b.ToTable("CompanySites");
                 });
 
+            modelBuilder.Entity("CoreRoutes.Models.DeliveryChecking", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("DeliveryDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("DeliveryStateFK")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ServiceTypeFK")
+                        .HasColumnType("int");
+
+                    b.Property<int>("UserFK")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DeliveryStateFK");
+
+                    b.HasIndex("ServiceTypeFK");
+
+                    b.HasIndex("UserFK");
+
+                    b.ToTable("DeliveryCheckings");
+                });
+
+            modelBuilder.Entity("CoreRoutes.Models.DeliveryState", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("State")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DeliveryStates");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            State = "Available"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            State = "Selected"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            State = "Working"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            State = "Delivered"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            State = "Skipped"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            State = "Undelivered"
+                        });
+                });
+
             modelBuilder.Entity("CoreRoutes.Models.Role", b =>
                 {
                     b.Property<int>("Id")
@@ -120,22 +197,22 @@ namespace CoreRoutes.Migrations
                         new
                         {
                             Id = 1,
-                            CreateAt = new DateTime(2021, 2, 26, 8, 56, 4, 320, DateTimeKind.Local).AddTicks(7018),
-                            UpdateAt = new DateTime(2021, 2, 26, 8, 56, 4, 321, DateTimeKind.Local).AddTicks(4754),
+                            CreateAt = new DateTime(2021, 2, 27, 14, 52, 45, 656, DateTimeKind.Local).AddTicks(3674),
+                            UpdateAt = new DateTime(2021, 2, 27, 14, 52, 45, 657, DateTimeKind.Local).AddTicks(1373),
                             UserRole = "Admin"
                         },
                         new
                         {
                             Id = 2,
-                            CreateAt = new DateTime(2021, 2, 26, 8, 56, 4, 321, DateTimeKind.Local).AddTicks(5036),
-                            UpdateAt = new DateTime(2021, 2, 26, 8, 56, 4, 321, DateTimeKind.Local).AddTicks(5040),
+                            CreateAt = new DateTime(2021, 2, 27, 14, 52, 45, 657, DateTimeKind.Local).AddTicks(1656),
+                            UpdateAt = new DateTime(2021, 2, 27, 14, 52, 45, 657, DateTimeKind.Local).AddTicks(1661),
                             UserRole = "Manager"
                         },
                         new
                         {
                             Id = 3,
-                            CreateAt = new DateTime(2021, 2, 26, 8, 56, 4, 321, DateTimeKind.Local).AddTicks(5042),
-                            UpdateAt = new DateTime(2021, 2, 26, 8, 56, 4, 321, DateTimeKind.Local).AddTicks(5043),
+                            CreateAt = new DateTime(2021, 2, 27, 14, 52, 45, 657, DateTimeKind.Local).AddTicks(1662),
+                            UpdateAt = new DateTime(2021, 2, 27, 14, 52, 45, 657, DateTimeKind.Local).AddTicks(1663),
                             UserRole = "Driver"
                         });
                 });
@@ -231,11 +308,11 @@ namespace CoreRoutes.Migrations
                         new
                         {
                             Id = 1,
-                            CreateAt = new DateTime(2021, 2, 26, 8, 56, 4, 350, DateTimeKind.Local).AddTicks(6533),
+                            CreateAt = new DateTime(2021, 2, 27, 14, 52, 45, 686, DateTimeKind.Local).AddTicks(8376),
                             Email = "eretana60@gmail.com",
-                            Password = "$2a$06$lgLHkW3AEO/rJbKhdxkyzuXkyETfQu8hqRoXoTdz2vInXbpCG97d6",
+                            Password = "$2a$06$NgmQD14PsZpR6NacE10ix.ynDnOQ7oxJNdbOmQRflZGzbgyPfKbO2",
                             RoleFK = 1,
-                            UpdateAt = new DateTime(2021, 2, 26, 8, 56, 4, 350, DateTimeKind.Local).AddTicks(6840),
+                            UpdateAt = new DateTime(2021, 2, 27, 14, 52, 45, 686, DateTimeKind.Local).AddTicks(8688),
                             Username = "eretana"
                         });
                 });
@@ -333,6 +410,33 @@ namespace CoreRoutes.Migrations
                         .IsRequired();
 
                     b.Navigation("Company");
+                });
+
+            modelBuilder.Entity("CoreRoutes.Models.DeliveryChecking", b =>
+                {
+                    b.HasOne("CoreRoutes.Models.DeliveryState", "DeliveryState")
+                        .WithMany()
+                        .HasForeignKey("DeliveryStateFK")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CoreRoutes.Models.ServiceType", "ServiceType")
+                        .WithMany()
+                        .HasForeignKey("ServiceTypeFK")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("CoreRoutes.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserFK")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("DeliveryState");
+
+                    b.Navigation("ServiceType");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("CoreRoutes.Models.Route", b =>

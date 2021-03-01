@@ -10,11 +10,20 @@
                     <tr>
                         <th>Id</th>
                         <th>Vehicle Name</th>
+                        <th class="fit">Options</th>
                     </tr>
                     @foreach (Vehicle ve in ViewBag.Vehicles){
                         <tr>
                             <td>@ve.Id</td>
                             <td>@ve.VehicleName</td>
+                            <td class="td-center fit">
+                                <a asp-action="Edit" asp-controller="Vehicles" asp-route-id="@ve.Id" class="btn btn-sm btn-light btn-icon mr-1">
+                                    <i class="fa fa-edit"></i>
+                                </a>
+                                <a asp-action="Delete" asp-controller="Vehicles" asp-route-id="@ve.Id" class="btn btn-sm btn-light btn-icon">
+                                    <i class="fa fa-times"></i>
+                                </a>
+                            </td>
                         </tr>
                     }
                 </table>

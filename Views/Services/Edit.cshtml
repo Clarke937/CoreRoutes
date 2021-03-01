@@ -1,0 +1,49 @@
+@model ServiceType
+<div class="row">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header">
+                <a class="btn btn-sm btn-icon btn-light" asp-action="Index" asp-controller="Services" >
+                    <i class="fa fa-arrow-left"></i>
+                </a>
+                <i class="fa fa-truck-plow mx-2"></i><b>Edit Service Type</b>
+            </div>
+            <div class="card-body">
+                <form asp-action="Update" method="POST" class="row">
+                    <input type="hidden" asp-for="Id" value="@ViewBag.Service.Id">
+                    <input type="hidden" id="vefk" value="@ViewBag.Service.VehicleFK">
+                    <div class="form-group col-12">
+                        <label>Service Name</label>
+                        <input type="text" class="form-control form-control-solid" asp-for="ServiceName" value="@ViewBag.Service.ServiceName">
+                    </div>
+                    <div class="form-group col-6">
+                        <label>Service Price</label>
+                        <input type="text" class="form-control form-control-solid" asp-for="Price" value="@ViewBag.Service.Price">
+                    </div>
+                    <div class="form-group col-6">
+                        <label>Vehicle:</label>
+                        <select class="form-control form-control-solid" asp-for="VehicleFK">
+                            @foreach (Vehicle ve in ViewBag.Vehicles){
+                                <option value="@ve.Id">@ve.VehicleName</option>
+                            }
+                        </select>
+                    </div>
+                    <div class="form-group col-6 mt-4">
+                        <button type="submit" class="btn btn-success rounded-pill">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col-4"></div>
+</div>
+
+@section Scripts{
+    <script>
+        $(document).ready(function(){
+            var veFK = $("#vefk").val();
+            $("#VehicleFK option[value='" + veFK + "']").attr('selected','selected');
+        });
+    </script>
+}
+

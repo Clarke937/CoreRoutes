@@ -1,0 +1,44 @@
+@model Company
+<div class="row">
+    <div class="col-8">
+        <div class="card">
+            <div class="card-header">
+                <a class="btn btn-sm btn-icon btn-light" asp-action="Index" asp-controller="Company" >
+                    <i class="fa fa-arrow-left"></i>
+                </a>
+                <i class="fa fa-store-alt mx-2"></i><b>Edit Company </b>
+            </div>
+            <div class="card-body">
+                <form asp-action="Update" asp-controller="Company" class="row" method="POST">
+                    <input type="hidden" asp-for="Id" value="@ViewBag.Company.Id">
+                    <div class="form-group col-12">
+                        <label for="">Company Name</label>
+                        <input type="text" class="form-control form-control-solid" asp-for="CompanyName" value="@ViewBag.Company.CompanyName">
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="">Phone</label>
+                        <input type="text" class="form-control form-control-solid" asp-for="Phone" value="@ViewBag.Company.Phone">
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="">Email</label>
+                        <input type="text" class="form-control form-control-solid" asp-for="Email" value="@ViewBag.Company.Email">
+                    </div>
+                    <div class="form-group col-12">
+                        <label for="">Country</label>
+                        <input type="text" class="form-control form-control-solid" asp-for="Country" value="@ViewBag.Company.Country">
+                    </div>
+                    <div class="form-group col-12">
+                        <label for="">Central Address</label>
+                        <input type="text" class="form-control form-control-solid" asp-for="CentralAddress" value="@ViewBag.Company.CentralAddress">
+                    </div>
+                    <div class="form-group col-12 mt-4">
+                        <button type="submit" class="btn btn-success rounded-pill">Edit Company</button>
+                    </div>
+                    
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="col"></div>
+</div>
